@@ -9,6 +9,15 @@ make
 cat ichigojam-xtal.bin test.bin > ichigojam-pack.bin  
 lpc21isp -bin ichigojam-pack.bin ...  
 
+## sample  
+
+test.bin <- test.bas  
+
+## how to build
+
+make  
+(bas2bin - binary file for Mac)  
+
 ## license
 
 CC BY 4.0 http://ichigojam.net/
