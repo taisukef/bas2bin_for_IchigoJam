@@ -1,3 +1,6 @@
+// IchigoJam BASIC txt -> bin (1024B) 
+// license: CC BY http://ichigojam.net/
+
 #include "stdio.h"
 #include "string.h"
 
@@ -86,13 +89,7 @@ int main(int argc, char** argv) {
 		blen += 3 + len + align + 1;
 		
 		printf("%d %s\n", num, body);
-//		putc(len, out);
-//		fputs(line, out);
 	}
-	putc(0, out);
-	putc(0, out);
-	blen += 2;
-	
 	fclose(in);
 	
 	if (blen > 1024) {
