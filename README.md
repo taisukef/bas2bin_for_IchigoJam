@@ -1,6 +1,6 @@
 # bas2bin_for_IchigoJam
 
-Let's edit BASIC program on your PC!  
+Let's make BASIC program on your PC!  
 This tool provide to convert IchigoJam BASIC to bin file.  
 You can add the C language code up to 3KB as asm!  
 
