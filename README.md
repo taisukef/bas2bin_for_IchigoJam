@@ -16,6 +16,11 @@ $ lpc21isp -bin ichigojam-pack.bin ...
 ichigojam.bin is firmware of IchigoJam.  
 http://ichigojam.net/  
 
+## options
+
+--nopadding  omit the padding  
+--limit4k  for IchigoCake  
+
 ## 3kb machine language
 
 edit src/main.c, src/entry.bas  
