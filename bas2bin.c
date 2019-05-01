@@ -1,8 +1,9 @@
 // IchigoJam BASIC txt -> bin (1024B) 
 // license: CC BY http://ichigojam.net/
 
-#include "stdio.h"
-#include "string.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int getNumber(char* s) {
 	char c = *s;
@@ -52,14 +53,43 @@ int file_length(char* fn) {
 	return size;
 }
 
+void err() {
+	printf("bas2bin {--nopadding --limit4k } [bas file] [bin file]\n");
+	exit(1);
+}
 int main(int argc, char** argv) {
 	if (argc < 3) {
-		printf("bas2bin [bas file] [bin file]\n");
-		return 1;
+		err();
 	}
+
+	int padding = 1;
+	int limit = 1024;
+	const char* fnbas = NULL;
+	const char* fnbin = NULL;
+	for (int i = 1; i < argc; i++) {
+		const char* p = argv[i];
+		printf("%s\n", p);
+		if (*p == '-') {
+			if (strcmp(p, "--nopadding") == 0) {
+				padding = 0;
+			} else if (strcmp(p, "--limit4k") == 0) {
+				limit = 4096;
+			}
+		} else {
+			if (fnbas == NULL) {
+				fnbas = p;
+			} else if (fnbin == NULL) {
+				fnbin = p;
+			}
+		}
+	}
+	if (fnbas == NULL || fnbin == NULL) {
+		err();
+	}
+//	printf("%s %s %d %d\n", fnbas, fnbin, padding, limit);
 	
-	FILE* in = fopen(argv[1], "r");
-	FILE* out = fopen(argv[2], "wb");
+	FILE* in = fopen(fnbas, "rb");
+	FILE* out = fopen(fnbin, "wb");
 	char line[256];
 	int blen = 0;
 	for (;;) {
@@ -92,15 +122,17 @@ int main(int argc, char** argv) {
 	}
 	fclose(in);
 	
-	if (blen > 1024) {
+	if (blen > limit) {
 		fclose(out);
-		printf("over 1k\n");
+		printf("over %d (size = %d)\n", limit, blen);
 		return 1;
 	}
-	for (int i = 0; i < 1024 - blen; i++) {
-		putc(0, out);
+	if (padding) {
+		for (int i = 0; i < limit - blen; i++) {
+			putc(0, out);
+		}
 	}
-	
+
 	fclose(out);
 	return 0;
 }
