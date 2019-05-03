@@ -68,7 +68,6 @@ int main(int argc, char** argv) {
 	const char* fnbin = NULL;
 	for (int i = 1; i < argc; i++) {
 		const char* p = argv[i];
-		printf("%s\n", p);
 		if (*p == '-') {
 			if (strcmp(p, "--nopadding") == 0) {
 				padding = 0;
