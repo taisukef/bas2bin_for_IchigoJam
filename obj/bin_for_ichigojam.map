@@ -1,0 +1,99 @@
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 obj/main.o
+ .data          0x0000000000000000        0x0 obj/main.o
+ .bss           0x0000000000000000        0x0 obj/main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x0000000000000000 0x0000000000000bfc xr
+RAM              0x0000000010000000 0x0000000000001000 w
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD obj/main.o
+LOAD /Users/fukuno/bin/gcc-arm-none-eabi-7-2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc.a
+LOAD /Users/fukuno/bin/gcc-arm-none-eabi-7-2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libgcc.a
+START GROUP
+LOAD /Users/fukuno/bin/gcc-arm-none-eabi-7-2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libgcc.a
+LOAD /Users/fukuno/bin/gcc-arm-none-eabi-7-2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libg.a
+LOAD /Users/fukuno/bin/gcc-arm-none-eabi-7-2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc.a
+END GROUP
+
+.text           0x0000000000000000      0x40e
+ *(.BASIC)
+ .BASIC         0x0000000000000000      0x400 obj/main.o
+                0x0000000000000000                BASIC
+ *(.ASMFLG)
+ .ASMFLG        0x0000000000000400        0x4 obj/main.o
+                0x0000000000000400                ASMFLG
+ *(.MAIN)
+ .MAIN          0x0000000000000404        0xa obj/main.o
+                0x0000000000000404                main
+OUTPUT(obj/bin_for_ichigojam.axf elf32-littlearm)
+
+.glue_7         0x0000000000000410        0x0
+ .glue_7        0x0000000000000410        0x0 linker stubs
+
+.glue_7t        0x0000000000000410        0x0
+ .glue_7t       0x0000000000000410        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000000410        0x0
+ .vfp11_veneer  0x0000000000000410        0x0 linker stubs
+
+.v4_bx          0x0000000000000410        0x0
+ .v4_bx         0x0000000000000410        0x0 linker stubs
+
+.iplt           0x0000000000000410        0x0
+ .iplt          0x0000000000000410        0x0 obj/main.o
+
+.igot.plt       0x0000000000000410        0x0
+ .igot.plt      0x0000000000000410        0x0 obj/main.o
+
+.rel.dyn        0x0000000000000410        0x0
+ .rel.iplt      0x0000000000000410        0x0 obj/main.o
+
+.debug_info     0x0000000000000000       0xda
+ .debug_info    0x0000000000000000       0xda obj/main.o
+
+.debug_abbrev   0x0000000000000000       0xb6
+ .debug_abbrev  0x0000000000000000       0xb6 obj/main.o
+
+.debug_loc      0x0000000000000000       0x8f
+ .debug_loc     0x0000000000000000       0x8f obj/main.o
+
+.debug_aranges  0x0000000000000000       0x20
+ .debug_aranges
+                0x0000000000000000       0x20 obj/main.o
+
+.debug_ranges   0x0000000000000000       0x10
+ .debug_ranges  0x0000000000000000       0x10 obj/main.o
+
+.debug_line     0x0000000000000000       0x3d
+ .debug_line    0x0000000000000000       0x3d obj/main.o
+
+.debug_str      0x0000000000000000      0x147
+ .debug_str     0x0000000000000000      0x147 obj/main.o
+
+.comment        0x0000000000000000       0x7f
+ .comment       0x0000000000000000       0x7f obj/main.o
+                                         0x80 (size before relaxing)
+
+.ARM.attributes
+                0x0000000000000000       0x31
+ .ARM.attributes
+                0x0000000000000000       0x31 obj/main.o
+
+.debug_frame    0x0000000000000000       0x28
+ .debug_frame   0x0000000000000000       0x28 obj/main.o
+
+Cross Reference Table
+
+Symbol                                            File
+ASMFLG                                            obj/main.o
+BASIC                                             obj/main.o
+_sizeof_BASIC                                     obj/main.o
+main                                              obj/main.o

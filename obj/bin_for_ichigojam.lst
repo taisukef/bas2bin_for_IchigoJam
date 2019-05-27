@@ -1,0 +1,83 @@
+
+obj/bin_for_ichigojam.axf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000040e  00000000  00000000  00010000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_info   000000da  00000000  00000000  0001040e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  2 .debug_abbrev 000000b6  00000000  00000000  000104e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_loc    0000008f  00000000  00000000  0001059e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000020  00000000  00000000  0001062d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_ranges 00000010  00000000  00000000  0001064d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   0000003d  00000000  00000000  0001065d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    00000147  00000000  00000000  0001069a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .comment      0000007f  00000000  00000000  000107e1  2**0
+                  CONTENTS, READONLY
+  9 .ARM.attributes 00000031  00000000  00000000  00010860  2**0
+                  CONTENTS, READONLY
+ 10 .debug_frame  00000028  00000000  00000000  00010894  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <BASIC>:
+   0:	27080001 	.word	0x27080001
+   4:	20424b33 	.word	0x20424b33
+   8:	006d7361 	.word	0x006d7361
+   c:	5056000a 	.word	0x5056000a
+  10:	23454b4f 	.word	0x23454b4f
+  14:	2c303037 	.word	0x2c303037
+  18:	38312c33 	.word	0x38312c33
+  1c:	2c342c30 	.word	0x2c342c30
+  20:	382c3337 	.word	0x382c3337
+  24:	3032312c 	.word	0x3032312c
+  28:	342c312c 	.word	0x342c312c
+  2c:	2c302c30 	.word	0x2c302c30
+  30:	2c383032 	.word	0x2c383032
+  34:	33372c33 	.word	0x33372c33
+  38:	342c352c 	.word	0x342c352c
+  3c:	34312c39 	.word	0x34312c39
+  40:	30372c30 	.word	0x30372c30
+  44:	312c332c 	.word	0x312c332c
+  48:	392c3838 	.word	0x392c3838
+  4c:	31372c36 	.word	0x31372c36
+  50:	312c302c 	.word	0x312c302c
+  54:	302c3030 	.word	0x302c3030
+  58:	302c302c 	.word	0x302c302c
+  5c:	3631312c 	.word	0x3631312c
+  60:	302c302c 	.word	0x302c302c
+  64:	00140000 	.word	0x00140000
+  68:	31223f16 	.word	0x31223f16
+  6c:	332f3030 	.word	0x332f3030
+  70:	553b223d 	.word	0x553b223d
+  74:	23285253 	.word	0x23285253
+  78:	2c303037 	.word	0x2c303037
+  7c:	00002933 	.word	0x00002933
+	...
+
+00000400 <ASMFLG>:
+ 400:	00000001                                ....
+
+00000404 <main>:
+
+IMPORT_BIN(".BASIC", "obj/entry.o", BASIC);
+
+__attribute__ ((section(".ASMFLG"))) char ASMFLG[]  = { 1, 0, 0, 0 };
+
+__attribute__ ((section(".MAIN"))) int main(int param, int ram, int rom, int (*divfunc)()) {
+ 404:	b510      	push	{r4, lr}
+ 406:	0001      	movs	r1, r0
+	//return param + 1;
+	return divfunc(100, param); // == 100 / param
+ 408:	2064      	movs	r0, #100	; 0x64
+ 40a:	4798      	blx	r3
+}
+ 40c:	bd10      	pop	{r4, pc}
