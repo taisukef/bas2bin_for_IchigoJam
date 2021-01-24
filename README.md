@@ -2,6 +2,7 @@
 
 Let's make BASIC program on your PC!  
 This tool is converter from IchigoJam BASIC to bin file.  
+You can add the C language code up to 3KB as asm!  
 
 ## how to use
 
@@ -26,7 +27,7 @@ edit src/main.c, src/entry.bas
 ```
 $ make  
 ```
-(need gcc)  
+(need arm-none-eabi-gcc and so on)  
 
 ## license
 
